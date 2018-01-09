@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Kendo UI";
-    src: url("https://cdn.kendostatic.com/2017.3.913/styles/images/kendoui.woff") format("woff"),
-         url("https://cdn.kendostatic.com/2017.3.913/styles/images/kendoui.ttf") format("truetype");
+    src: url("https://kendo.cdn.telerik.com/2016.2.714/styles/images/kendoui.woff") format("woff"),
+         url("https://kendo.cdn.telerik.com/2016.2.714/styles/images/kendoui.ttf") format("truetype");
 }
 
 body:before
