@@ -458,7 +458,7 @@
         <script id="listview-template" type="x-kendo-template">
             <li class="col-xs-6 col-md-4 col-lg-2">
                 <figure>
-                    <img src="assets/photos/#= Id #.jpg" class="img-responsive" />
+                    <img src='@Url.Content("~/assets/photos/#= (src=%27%40Url.Content%28) Id #.jpg")' class="img-responsive" />  
                     <figcaption class="hidden-xs">
                         <h4>#: Title #</h4>
                         <p class="hidden-sm">
