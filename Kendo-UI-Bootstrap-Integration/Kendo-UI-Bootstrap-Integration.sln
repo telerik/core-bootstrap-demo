@@ -1,16 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{851D151F-0255-4436-83E5-A9D3E23594B0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{865E783E-3FCA-45A6-9879-959C21AA905C}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Kendo-UI-Bootstrap-Integration", "src\Kendo-UI-Bootstrap-Integration\Kendo-UI-Bootstrap-Integration.xproj", "{2408FD51-1090-4B25-8A7A-19B95505F148}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kendo-UI-Bootstrap-Integration", "src\Kendo-UI-Bootstrap-Integration\Kendo-UI-Bootstrap-Integration.csproj", "{2408FD51-1090-4B25-8A7A-19B95505F148}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2408FD51-1090-4B25-8A7A-19B95505F148} = {851D151F-0255-4436-83E5-A9D3E23594B0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0834AEFB-A734-44B5-8012-A3BAF45A4451}
 	EndGlobalSection
 EndGlobal
