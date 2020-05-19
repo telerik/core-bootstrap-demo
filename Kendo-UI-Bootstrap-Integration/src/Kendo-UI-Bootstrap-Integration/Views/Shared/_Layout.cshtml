@@ -4,20 +4,16 @@
     <title>Kendo UI &hearts; Twitter Bootstrap: Responsive demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="~/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.114/styles/kendo.common-bootstrap.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.114/styles/kendo.bootstrap.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.114/styles/kendo.dataviz.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.114/styles/kendo.dataviz.bootstrap.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.common-bootstrap.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.bootstrap.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.dataviz.bootstrap.min.css" />
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2020.1.114/js/kendo.all.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2020.1.114/js/kendo.timezones.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2020.1.114/js/kendo.aspnetmvc.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.timezones.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.aspnetmvc.min.js"></script>
     <script src="~/js/theme-chooser.js"></script>
     <link rel="stylesheet" href="~/css/styles.css" />
-    <!--[if lt IE 9]>
-        <script src="vendor/html5shiv.js"></script>
-        <script src="vendor/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
     <header>
@@ -51,8 +47,6 @@
                               }
                           })
                         )
-
-
                     </label>
 
                     <label class="col-sm-4">
@@ -165,6 +159,7 @@
                 e.preventDefault();
             });
         })
+        
         function onDimensionChange() {
             window.kendoThemeChooser.changeCommon(this.value(), true);
         }
