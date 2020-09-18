@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Kendo UI";
-    src: url("https://kendo.cdn.telerik.com/2020.2.513/styles/images/kendoui.woff") format("woff"),
-         url("https://kendo.cdn.telerik.com/2020.2.513/styles/images/kendoui.ttf") format("truetype");
+    src: url("https://kendo.cdn.telerik.com/2020.3.915/styles/images/kendoui.woff") format("woff"),
+         url("https://kendo.cdn.telerik.com/2020.3.915/styles/images/kendoui.ttf") format("truetype");
 }
 
 body:before
@@ -111,7 +111,7 @@ header .k-dropdown-wrap .k-select {
 }
 
 header .k-dropdown .k-i-arrow-s {
-    background-image: url("https://kendo.cdn.telerik.com/2020.2.513/styles/Bootstrap/sprite.png");
+    background-image: url("https://kendo.cdn.telerik.com/2020.3.915/styles/Bootstrap/sprite.png");
     background-position: -16px -32px;
 }
 
