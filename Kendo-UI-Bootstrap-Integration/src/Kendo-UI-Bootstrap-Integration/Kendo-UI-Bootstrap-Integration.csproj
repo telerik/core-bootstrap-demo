@@ -28,7 +28,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
-    <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2021.3.914" />
+    <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2021.3.1109" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp' ">
