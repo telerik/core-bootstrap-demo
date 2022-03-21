@@ -29,7 +29,7 @@
             <div id="configurator-wrap" class="col-sm-9 hidden-xs">
                 <div id="configurator" class="row">
                     <label class="col-sm-4">
-                        <div class="description">Dimensions</div>
+                        <span class="description">Dimensions</span>
                         @(Html.Kendo().DropDownList()
                         .Name("dimensions")
                         .DataTextField("Text")
@@ -50,7 +50,7 @@
                     </label>
 
                     <label class="col-sm-4">
-                        <div class="description">Theme</div>
+                        <span class="description">Theme</span>
                         @(Html.Kendo().DropDownList()
                             .Name("theme")
                             .DataTextField("Text")
@@ -107,11 +107,10 @@
                     </label>
 
                     <label class="col-sm-4">
-                        <div class="description">Font-size</div>
+                        <span class="description">Font-size</span>
                         @(Html.Kendo().DropDownList()
                         .Name("font-size")
                         .DataTextField("Text")
-                        .Height(204)
                         .DataValueField("Value")
                         .Value("14")
                         .Events(e => e.Change("changeFontSize"))
