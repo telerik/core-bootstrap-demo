@@ -28,7 +28,7 @@
     <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2022.1.119" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
