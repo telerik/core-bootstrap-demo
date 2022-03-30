@@ -41,7 +41,7 @@ header button {
 header .container h1 {
     margin: 0;
     font-size: 21px;
-    line-height: 65px;
+    line-height: 45px;
     padding-top: 20px;
     padding-left: 0;
 }
@@ -69,7 +69,6 @@ header .description {
 header .k-dropdown,
 header #font-size-value {
     font-size: 18px;
-    line-height: 45px;
     margin-bottom: 9px;
 }
 
@@ -91,7 +90,8 @@ header .k-dropdown-wrap.k-state-default {
 header .k-dropdown-wrap.k-state-hover,
 header .k-dropdown-wrap.k-state-active,
 header .k-dropdown-wrap.k-state-focused {
-    background-color: #030303;
+    /*background-color: #030303;*/
+    background-color: red;
 }
 
 header .k-dropdown-wrap.k-state-focused {
@@ -366,3 +366,15 @@ header .container h1.visible-sm {
     background-color: #212a33;
     color: #fff;
 }
+
+.k-list-content {
+    color: #fff;
+    background-color: #333;
+}
+
+#configurator .k-widget.k-picker {
+    color: #fff;
+    background-color: #333;
+}
+
+

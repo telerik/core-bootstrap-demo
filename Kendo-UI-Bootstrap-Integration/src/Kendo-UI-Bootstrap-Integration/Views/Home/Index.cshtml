@@ -120,7 +120,7 @@
                                             .ChartArea(c => c.Margin(10).Background("transparent"))
                                             .SeriesDefaults(s => s
                                                 .Area()
-                                                .Line(l => l.Style(ChartAreaStyle.Smooth))
+                                                .Line(l => l.Style(ChartSeriesLineStyle.Smooth))
                                                 .Stack(true))
                                             .CategoryAxis(a => a
                                                 .Categories(m => m.Date)
@@ -243,7 +243,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-4" for="name">Name</label>
                 <div class="col-sm-8 col-md-6">
-                    <input id="name" value="Johnatan Dodsworth" class="k-textbox" />
+                    @(Html.Kendo().TextBox().Name("name").Value("Johnatan Dodsworth"))
                 </div>
             </div>
 
@@ -303,7 +303,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-4" for="occupation">Occupation</label>
                 <div class="col-sm-8 col-md-6">
-                    <input id="occupation" placeholder="e.g. Developer" class="k-textbox" />
+                    @(Html.Kendo().TextBox().Name("occupation").Placeholder("e.g. Developer"))
                 </div>
             </div>
 

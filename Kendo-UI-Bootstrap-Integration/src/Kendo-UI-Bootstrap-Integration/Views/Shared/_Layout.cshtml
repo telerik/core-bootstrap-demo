@@ -4,14 +4,14 @@
     <title>Kendo UI &hearts; Twitter Bootstrap: Responsive demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="~/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.3.1109/styles/kendo.common-bootstrap.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.3.1109/styles/kendo.bootstrap.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.3.1109/styles/kendo.dataviz.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.3.1109/styles/kendo.dataviz.bootstrap.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.119/styles/kendo.common-bootstrap.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.119/styles/kendo.bootstrap.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.119/styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.119/styles/kendo.dataviz.bootstrap.min.css" />
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.1109/js/kendo.all.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.1109/js/kendo.timezones.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.1109/js/kendo.aspnetmvc.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.119/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.119/js/kendo.timezones.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.119/js/kendo.aspnetmvc.min.js"></script>
     <script src="~/js/theme-chooser.js"></script>
     <link rel="stylesheet" href="~/css/styles.css" />
 </head>
@@ -29,7 +29,7 @@
             <div id="configurator-wrap" class="col-sm-9 hidden-xs">
                 <div id="configurator" class="row">
                     <label class="col-sm-4">
-                        <div class="description">Dimensions</div>
+                        <span class="description">Dimensions</span>
                         @(Html.Kendo().DropDownList()
                         .Name("dimensions")
                         .DataTextField("Text")
@@ -50,7 +50,7 @@
                     </label>
 
                     <label class="col-sm-4">
-                        <div class="description">Theme</div>
+                        <span class="description">Theme</span>
                         @(Html.Kendo().DropDownList()
                             .Name("theme")
                             .DataTextField("Text")
@@ -107,11 +107,10 @@
                     </label>
 
                     <label class="col-sm-4">
-                        <div class="description">Font-size</div>
+                        <span class="description">Font-size</span>
                         @(Html.Kendo().DropDownList()
                         .Name("font-size")
                         .DataTextField("Text")
-                        .Height(204)
                         .DataValueField("Value")
                         .Value("14")
                         .Events(e => e.Change("changeFontSize"))
