@@ -4,9 +4,9 @@
     <section class="well">
         <h2 class="ra-well-title">What is this page?</h2>
 
-        <p>This page shows how to use Kendo UI alongside Twitter Bootstrap.</p>
+        <p>This page shows how to use Telerik UI for ASP.NET Core alongside Twitter Bootstrap.</p>
 
-        <p>The grid layout and responsive CSS is provided by Bootstrap, and widgets are provided by Kendo UI.</p>
+        <p>The grid layout and responsive CSS is provided by Bootstrap, and components are provided by Telerik UI for ASP.NET Core.</p>
 
         <p>Resize the page or customize it using the pickers above to see its responsive features.</p>
 
@@ -22,7 +22,7 @@
                 children.Add().Text("Orders").Url("#orders");
                 children.Add().Text("Gallery").Url("#gallery");
                 children.Add().Text("FAQ").Url("#faq");
-                children.Add().Text("Kendo UI demos").Url("https://demos.telerik.com/kendo-ui");
+                children.Add().Text("Telerik UI for ASP.NET Core demos").Url("https://demos.telerik.com/aspnet-core/");
             }
         )
     )
@@ -353,8 +353,8 @@
                                   Value = "Ruby on Rails"
                               },
                               new SelectListItem() {
-                                  Text = "Kendo UI",
-                                  Value = "Kendo UI"
+                                  Text = "UI for ASP.NET Core",
+                                  Value = "UI for ASP.NET Core"
                               }
                           })
                     )
@@ -548,44 +548,30 @@
             .HtmlAttributes(new { @class = "ra-well-overlay" })
             .Items(panelbar =>
                     {
-                        panelbar.Add().Text("What is Kendo UI")
+                        panelbar.Add().Text("What is Telerik UI for ASP.NET Core")
                                 .Selected(true)
                                 .Content(@<text>
                                 <div>
-                                    <p>Kendo UI is a HTML5, jQuery-based framework for building modern HTML apps. Kendo UI combines the best of emerging HTML5, CSS3, and JavaScript technologies with robust, cross-browser techniques to deliver a framework that is both powerfully rich and broadly compatible with older browsers.</p>
-                                    <p>Kendo UI combines everything that a developer needs to build a rich JavaScript app, eliminating the traditional challenge of manually researching and combining all of the needed plug-ins, frameworks, and libraries needed to build apps. Kendo UI includes rich UI controls for desktop, mobile and data vizualization, a JavaScript DataSource, fast Templates, cross-device Drag and Drop API, Globalization, Validation and MVVM framework extensions, and more.</p>
-                                    <p><a href="https://www.telerik.com/download/kendo-ui-complete">Download Kendo UI</a> and experience the difference today</p>
+                                    <p>Telerik UI for ASP.NET Core is a set of server-side wrappers that bring the HTML/JavaScript Kendo UI widgets to .NET Core. Our server-side wrappers come in the form of HTML and Tag helpers. From client-side perspective, the vanilla HTML/JavaScript Kendo UI widgets and their ASP.NET Core server-side wrappers represent the same functionalities and provide the same capabilities.</p>
+                                    <p><a href="https://www.telerik.com/try/aspnet-core-ui">Download Kendo UI</a> and experience the difference today</p>
                                 </div></text>);
-                        panelbar.Add().Text("Who should use Kendo UI?")
+                        panelbar.Add().Text("Who should use UI for ASP.NET Core?")
                                             .Encoded(false)
                                             .Content(@<text>
                                 <div>
-                                    <p>Kendo UI is a HTML5, jQuery-based framework for building modern HTML apps. Kendo UI combines the best of emerging HTML5, CSS3, and JavaScript technologies with robust, cross-browser techniques to deliver a framework that is both powerfully rich and broadly compatible with older browsers.</p>
-                                    <p>Kendo UI combines everything that a developer needs to build a rich JavaScript app, eliminating the traditional challenge of manually researching and combining all of the needed plug-ins, frameworks, and libraries needed to build apps. Kendo UI includes rich UI controls for desktop, mobile and data vizualization, a JavaScript DataSource, fast Templates, cross-device Drag and Drop API, Globalization, Validation and MVVM framework extensions, and more.</p>
-                                    <p><a href="https://www.telerik.com/download/kendo-ui-complete">Download Kendo UI</a> and experience the difference today</p>
+                                    <p>Telerik UI for ASP.NET Core is a set of server-side wrappers that bring the HTML/JavaScript Kendo UI widgets to .NET Core. Our server-side wrappers come in the form of HTML and Tag helpers. From client-side perspective, the vanilla HTML/JavaScript Kendo UI widgets and their ASP.NET Core server-side wrappers represent the same functionalities and provide the same capabilities.</p>
+                                    <p><a href="https://www.telerik.com/try/aspnet-core-ui">Download Kendo UI</a> and experience the difference today</p>
                                 </div></text>);
-                        panelbar.Add().Text("What are Kendo UI widgets?")
+                        panelbar.Add().Text("What are Telerik UI for ASP.NET Core components?")
                                             .Encoded(false)
                                             .Content(@<text>
                                 <div>
-                                    <p>Kendo UI widgets are part of the Kendo UI Framework. Kendo UI widgets are grouped into three collections:</p>
+                                    <p>The Telerik UI for ASP.NET Core HTML and Tag helpers:</p>
                                     <ul>
-                                        <li>Kendo UI Web for touch-enabled desktop development</li>
-                                        <li>Kendo UI DataViz for desktop and mobile data vizualizations</li>
-                                        <li>Kendo UI Mobile for mobile app development, including PhoneGap deployment</li>
+                                        <li>Allow you to configure a Kendo UI widget through C# or VB.NET code—for example, to set its value, data source, and so on</li>
+                                        <li>Render the HTML and JavaScript that are needed to initialize a Kendo UI widget</li>
+                                        <li>Propagate the widget’s options to the client-side through its initialization script</li>
                                     </ul>
-                                    <p>
-                                        All widgets complement the tooling you need for modern HTML5 and JavaScript development.<br />
-                                        <br />
-                                        The Kendo UI Framework provides more than UI, and in the future Kendo UI will offer additional tools to modern HTML developers.
-                                    </p>
-                                </div></text>);
-                        panelbar.Add().Text("How do you use Kendo UI?")
-                                            .Encoded(false)
-                                            .Content(@<text>
-                                <div>
-                                    <p>Kendo UI is a pure JavaScript framework, so using Kendo UI is as simple as referencing JavaScript and CSS resources on your page. Once Kendo UI is configured on your page, the rich API gives you everything you need to initialize and configure an application.</p>
-                                    <p>To learn more about using and installing Kendo UI, visit the Kendo UI&nbsp;<a href="https://demos.telerik.com/kendo-ui">online demos</a>.</p>
                                 </div></text>);
                     }
                 )
