@@ -26,7 +26,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
-    <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2022.2.510" />
+    <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2022.2.621" />
   </ItemGroup>
 
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
