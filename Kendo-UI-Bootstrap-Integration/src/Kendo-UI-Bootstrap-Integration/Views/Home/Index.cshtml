@@ -1,16 +1,18 @@
 ﻿@*@model IEnumerable<Kendo_UI_Bootstrap_Integration.Models.ChartViewModel>*@
 
 <div id="example" class="container">
-    <section class="well">
-        <h2 class="ra-well-title">What is this page?</h2>
+    <section class="card">
+        <div class="card-header">What is this page?</div>
 
-        <p>This page shows how to use Telerik UI for ASP.NET Core alongside Twitter Bootstrap.</p>
+        <div class="card-body">
+              <p>This page shows how to use Telerik UI for ASP.NET Core alongside Twitter Bootstrap.</p>
 
-        <p>The grid layout and responsive CSS is provided by Bootstrap, and components are provided by Telerik UI for ASP.NET Core.</p>
+              <p>The grid layout and responsive CSS is provided by Bootstrap, and components are provided by Telerik UI for ASP.NET Core.</p>
 
-        <p>Resize the page or customize it using the pickers above to see its responsive features.</p>
+              <p>Resize the page or customize it using the pickers above to see its responsive features.</p>
 
-        <p>The source for this demo is <a href="https://github.com/telerik/core-bootstrap-demo">available on GitHub</a></p>
+              <p>The source for this demo is <a href="https://github.com/telerik/core-bootstrap-demo">available on GitHub</a></p>
+        </div>
     </section>
 
     @(Html.Kendo().Menu()
@@ -22,23 +24,27 @@
                 children.Add().Text("Orders").Url("#orders");
                 children.Add().Text("Gallery").Url("#gallery");
                 children.Add().Text("FAQ").Url("#faq");
-                children.Add().Text("Telerik UI for ASP.NET Core demos").Url("https://demos.telerik.com/aspnet-core/");
+            children.Add().Text("Telerik UI for ASP.NET Core demos").Url("https://demos.telerik.com/aspnet-core/");
             }
         )
     )
+
     <div class="row clearfix">
         <div class="col-lg-4">
-            <section id="profile" class="well">
-                <h2 class="ra-well-title">Profile</h2>
-                <div class="row">
-                    <div class="col-lg-5 col-sm-2">
-                        <img src="~/assets/avatar.jpg" class="ra-avatar img-responsive" />
-                    </div>
+            <section id="profile" class="card ra-section">
+                <div class="card-header">Profile</div>
 
-                    <div class="col-lg-7 col-sm-2">
-                        <span class="ra-first-name">Jonathan</span>
-                        <span class="ra-last-name">Dodsworth</span>
-                        <div class="ra-position">Inside Sales Coordinator</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-3">
+                            <img src="~/assets/avatar.jpg" class="avatar img-fluid" />
+                        </div>
+
+                        <div class="col-lg-8 col-md-9">
+                            <span class="ra-first-name">Jonathan</span>
+                            <span class="ra-last-name">Dodsworth</span>
+                            <div class="ra-position">Inside Sales Coordinator</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -53,48 +59,49 @@
                                 .Encoded(false)
                                 .Selected(true)
                                 .Content(@<text>
-                                @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.RevenueViewModel>()
+                                        @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.RevenueViewModel>()
                                             .Name("revenue")
                                             .DataSource(ds => ds.Read(read => read.Action("Revenue", "Home")))
                                             .Transitions(false)
                                             .Theme("bootstrap")
-                                            .ChartArea(chart => chart.Margin(10).Background("transparent"))
+                                            .ChartArea(chart => chart.Margin(m => m.Top(15))
+                                            .Background("transparent"))
                                             .Legend(l => l.Visible(false))
-                                            .SeriesDefaults(s => s
+                                            .SeriesDefaults(s=>s
                                                 .Column()
                                                 .Stack(true))
-                                            .CategoryAxis(a => a
-                                                .Line(l => l.Visible(false))
-                                                .MajorGridLines(m => m.Visible(false))
-                                                .Labels(l => l.Visible(false))
-                                                .Categories(m => m.Date))
-                                            .Series(series =>
-                                            {
-                                                series.Column(model => model.Canterbury).Name("Canterbury");
-                                                series.Column(model => model.Manchester).Name("Manchester");
-                                                series.Column(model => model.Rochester).Name("Rochester");
+                                            .CategoryAxis(a=>a
+                                                .Line(l=>l.Visible(false))
+                                                .MajorGridLines(m=>m.Visible(false))
+                                                .Labels(l=>l.Visible(false))
+                                                .Categories(m=>m.Date))
+                                            .Series(series => {
+                                               series.Column(model => model.Canterbury).Name("Canterbury");
+                                               series.Column(model => model.Manchester).Name("Manchester");
+                                               series.Column(model => model.Rochester).Name("Rochester");
                                             })
-                                            .ValueAxis(v => v
+                                            .ValueAxis(v=>v
                                                 .Numeric()
-                                                .Labels(l => l
+                                                .Labels(l=>l
                                                     .Step(2)
                                                     .Template("$#= value #")
                                                 )
                                                 .PlotBands(bands => bands
                                                     .Add().From(30000).To(50000).Color("#a7c9e6").Opacity(0.3)
                                                 ))
-                                           .Tooltip(t => t.Visible(true).Template("#= series.name # <br /> #= category #: $#= value #"))
-                                )
-                                </text>);
+                                           .Tooltip(t=>t.Visible(true).Template("#= series.name # <br /> #= category #: $#= value #"))
+                                        )
+                        </text>);
                         tabstrip.Add().Text("<span class='km-icon spd'></span><span class='hidden-xs'>Sales / day</span>")
                                 .Encoded(false)
                                 .Content(@<text>
-                                @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.SalesPerDayViewModel>()
+                                            @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.SalesPerDayViewModel>()
                                             .Name("sales-per-day")
                                             .DataSource(ds => ds.Read(read => read.Action("SalesPerDay", "Home")))
                                             .Transitions(false)
                                             .Theme("bootstrap")
-                                            .ChartArea(chart => chart.Margin(10).Background("transparent"))
+                                            .ChartArea(chart => chart.Margin(m => m.Top(15))
+                                            .Background("transparent"))
                                             .Legend(l => l.Visible(false))
                                             .SeriesDefaults(s => s.VerticalBullet())
                                             .CategoryAxis(a => a.Categories(m => m.Date)
@@ -106,287 +113,301 @@
                                             {
                                                 bands.Add().From(10000).To(20000).Color("#ff0000").Opacity(0.05);
                                             }))
-                                )
-                                </text>);
+                                            )
+                        </text>);
                         tabstrip.Add().Text("<span class='km-icon spr'></span><span class='hidden-xs'>Sales / region</span>")
                                 .Encoded(false)
                                 .Content(@<text>
-                                @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.SalesPerRegionViewModel>()
+                                            @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.SalesPerRegionViewModel>()
                                             .Name("sales-per-region")
                                             .DataSource(ds => ds.Read(read => read.Action("SalesPerRegion", "Home")))
                                             .Transitions(false)
                                             .Theme("bootstrap")
-                                            .Legend(l => l.Visible(false))
-                                            .ChartArea(c => c.Margin(10).Background("transparent"))
-                                            .SeriesDefaults(s => s
+                                            .Legend(l=>l.Visible(false))
+                                            .ChartArea(c=>c.Margin(m => m.Top(15))
+                                            .Background("transparent"))
+                                            .SeriesDefaults(s=>s
                                                 .Area()
-                                                .Line(l => l.Style(ChartSeriesLineStyle.Smooth))
+                                                .Line(l=>l.Style(ChartAreaStyle.Smooth))
                                                 .Stack(true))
-                                            .CategoryAxis(a => a
-                                                .Categories(m => m.Date)
-                                                .Line(l => l.Visible(false))
-                                                .Labels(l => l.Visible(false))
-                                                .MajorGridLines(l => l.Visible(false))
+                                            .CategoryAxis(a=>a
+                                                .Categories(m=>m.Date)
+                                                .Line(l=>l.Visible(false))
+                                                .Labels(l=>l.Visible(false))
+                                                .MajorGridLines(l=>l.Visible(false))
                                                 )
-                                           .Tooltip(t => t.Visible(false).Template("#= series.name # <br /> #= category #: #= value #"))
-                                           .Series(series =>
-                                           {
+                                           .Tooltip(t=>t.Visible(false).Template("#= series.name # <br /> #= category #: #= value #"))
+                                           .Series(series => {
                                                series.Area(model => model.Canterbury).Name("Canterbury");
                                                series.Area(model => model.Manchester).Name("Manchester");
                                                series.Area(model => model.Rochester).Name("Rochester");
-                                           })
-                                            .ValueAxis(v => v.Numeric().Labels(l => l.Step(2)))
-                                )
-                                </text>);
+                                            })
+                                            .ValueAxis(v=>v.Numeric().Labels(l=>l.Step(2)))
+                                        )
+                        </text>);
                         tabstrip.Add().Text("<span class='km-icon share'></span><span class='hidden-xs'>Market share</span>")
                                 .Encoded(false)
                                 .Content(@<text>
-                                @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.DonutChartViewModel>()
-                                                .HtmlAttributes(new { @class = "market-donut" })
+                                            @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.DonutChartViewModel>()
+                                                .HtmlAttributes(new { @class = "market-donut"})
                                                 .Name("market-alice-mutton")
-                                                .DataSource(ds => ds.Read(read => read.Action("AliceMutton", "Home")).Group(g => g.Add(d => d.Series)))
+                                                .DataSource(ds => ds.Read(read => read.Action("AliceMutton", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
                                                 .Theme("bootstrap")
                                                 .Title(t => t
                                                     .Text("Alice Mutton")
                                                     .Position(ChartTitlePosition.Bottom)
-                                                )
+                                                    .Padding(4)
+                                                    .Margin(0))
                                                 .Legend(l => l.Visible(false))
                                                 .ChartArea(c => c
+                                                    .Margin(m => m.Top(15))
                                                     .Background("transparent"))
-                                                .Series(series =>
-                                                {
+                                                .Series(series => {
                                                     series.Donut(d => d.Value, d => d.Category);
                                                 })
-                                                .Tooltip(t => t
+                                                .Tooltip(t=>t
                                                     .Visible(true)
                                                     .Template("#= category # (#= series.name #): #= value #%"))
-                                )
+                                            )
 
-                                @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.DonutChartViewModel>()
-                                                .HtmlAttributes(new { @class = "market-donut" })
+                                            @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.DonutChartViewModel>()
+                                                .HtmlAttributes(new { @class = "market-donut"})
                                                 .Name("market-gravad")
-                                                .DataSource(ds => ds.Read(read => read.Action("Gravad", "Home")).Group(g => g.Add(d => d.Series)))
+                                                .DataSource(ds => ds.Read(read => read.Action("Gravad", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
                                                 .Theme("bootstrap")
                                                 .Title(t => t
                                                     .Text("Gravad lax")
                                                     .Position(ChartTitlePosition.Bottom)
-                                                )
+                                                    .Padding(4)
+                                                    .Margin(0))
                                                 .Legend(l => l.Visible(false))
                                                 .ChartArea(c => c
+                                                    .Margin(m => m.Top(15))
                                                     .Background("transparent"))
-                                                .Series(series =>
-                                                {
+                                                .Series(series => {
                                                     series.Donut(d => d.Value, d => d.Category);
                                                 })
-                                                .Tooltip(t => t
+                                                .Tooltip(t=>t
                                                     .Visible(true)
                                                     .Template("#= category # (#= series.name #): #= value #%"))
-                                )
+                                            )
 
-                                @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.DonutChartViewModel>()
-                                                .HtmlAttributes(new { @class = "market-donut" })
+                                            @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.DonutChartViewModel>()
+                                                .HtmlAttributes(new { @class = "market-donut"})
                                                 .Name("market-inlagd")
-                                                .DataSource(ds => ds.Read(read => read.Action("Inlagd", "Home")).Group(g => g.Add(d => d.Series)))
+                                                .DataSource(ds => ds.Read(read => read.Action("Inlagd", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
                                                 .Theme("bootstrap")
                                                 .Title(t => t
                                                     .Text("Inlagd Sill")
                                                     .Position(ChartTitlePosition.Bottom)
-                                                )
+                                                    .Padding(4)
+                                                    .Margin(0))
                                                 .Legend(l => l.Visible(false))
                                                 .ChartArea(c => c
-                                                    .Margin(15)
+                            .Margin(m => m.Top(15))
                                                     .Background("transparent"))
-                                                .Series(series =>
-                                                {
+                                                .Series(series => {
                                                     series.Donut(d => d.Value, d => d.Category);
                                                 })
-                                                .Tooltip(t => t
+                                                .Tooltip(t=>t
                                                     .Visible(true)
                                                     .Template("#= category # (#= series.name #): #= value #%"))
-                                )
+                                            )
 
-                                @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.DonutChartViewModel>()
-                                                .HtmlAttributes(new { @class = "market-donut" })
+                                       @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.DonutChartViewModel>()
+                                                .HtmlAttributes(new { @class = "market-donut"})
                                                 .Name("market-spageslid")
-                                                .DataSource(ds => ds.Read(read => read.Action("Spegesild", "Home")).Group(g => g.Add(d => d.Series)))
+                                                .DataSource(ds => ds.Read(read => read.Action("Spegesild", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
                                                 .Theme("bootstrap")
                                                 .Title(t => t
                                                     .Text("Spageslid")
                                                     .Position(ChartTitlePosition.Bottom)
-                                                )
+                                                    .Padding(4)
+                                                    .Margin(0))
                                                 .Legend(l => l.Visible(false))
                                                 .ChartArea(c => c
+                                                    .Margin(m => m.Top(15))
                                                     .Background("transparent"))
-                                                .Series(series =>
-                                                {
+                                                .Series(series => {
                                                     series.Donut(d => d.Value, d => d.Category);
                                                 })
-                                                .Tooltip(t => t
+                                                .Tooltip(t=>t
                                                     .Visible(true)
                                                     .Template("#= category # (#= series.name #): #= value #%"))
-                                )
-                                </text>);
+                                            )
+                        </text>);
                     }
                 )
             )
-
         </div>
     </div>
 
-    <section class="well">
-        <h2 class="ra-well-title">Profile Setup</h2>
-        <div class="form-horizontal form-widgets col-sm-6">
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="name">Name</label>
-                <div class="col-sm-8 col-md-6">
-                    @(Html.Kendo().TextBox().Name("name").Value("Johnatan Dodsworth"))
+    <section class="card">
+        <div class="card-header">Profile Setup</div>
+
+        <div class="card-body row">
+            <div class="form-widgets col-md-6">
+                <div class="row mb-3">
+                    <label class="col-sm-12 col-md-4 form-label text-md-end" for="name">Name</label>
+                    <div class="col-sm-12 col-md-8 col-lg-6">
+                        @(Html.Kendo().TextBox()
+                             .Name("name")
+                             .Placeholder("Name")
+                             .Value("Johnatan Dodsworth")
+                         )
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-12 col-md-4 form-label text-md-end" for="birthday">Birthday</label>
+                    <div class="col-sm-12 col-md-8 col-lg-6">
+                        @(Html.Kendo().DatePicker().Name("date").Value("10/09/1979"))
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-12 col-md-4 form-label text-md-end" for="gender">Gender</label>
+                    <div class="col-sm-12 col-md-8 col-lg-6">
+                        @(Html.Kendo().DropDownList()
+                               .Name("gender")
+                               .DataTextField("Text")
+                               .DataValueField("Value")
+                               .Value("Male")
+                               .BindTo(new List<SelectListItem>() {
+                                     new SelectListItem() {
+                                         Text = "Male",
+                                         Value = "Male"
+                                     },
+                                     new SelectListItem() {
+                                         Text = "Female",
+                                         Value = "Female"
+                                     }
+                               })
+                            )
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-12 col-md-4 form-label text-md-end" for="language">Language</label>
+                    <div class="col-sm-12 col-md-8 col-lg-6">
+                        @(Html.Kendo().DropDownList()
+                               .Name("language")
+                               .DataTextField("Text")
+                               .DataValueField("Value")
+                               .Value("English")
+                               .BindTo(new List<SelectListItem>() {
+                                     new SelectListItem() {
+                                         Text = "English",
+                                         Value = "English"
+                                     },
+                                     new SelectListItem() {
+                                         Text = "German",
+                                         Value = "German"
+                                     }
+                                 })
+                            )
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="birthday">Birthday</label>
-                <div class="col-sm-8 col-md-6">
-                    @(Html.Kendo().DatePicker().Name("date").Value("10/09/1979"))
+            <div class="form-widgets col-md-6">
+                <div class="row mb-3">
+                    <label class="col-sm-12 col-md-4 form-label text-md-end" for="occupation">Occupation</label>
+                    <div class="col-sm-12 col-md-8 col-lg-6">
+                        @(Html.Kendo().TextBox()
+                          .Name("occupation")
+                          .Placeholder("Occupation")
+                          .Value("e.g. Developer")
+                        )
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-12 col-md-4 form-label text-md-end" for="skills">Skills</label>
+                    <div class="col-sm-12 col-md-8 col-lg-6">
+                        @(Html.Kendo().MultiSelect()
+                             .Name("skills")
+                             .DataTextField("Text")
+                             .DataValueField("Value")
+                             .Value(new string[] { "C#", "jQuery" })
+                             .BindTo(new List<SelectListItem>() {
+                                   new SelectListItem() {
+                                       Text = "C",
+                                       Value = "C"
+                                   },
+                                   new SelectListItem() {
+                                       Text = "C++",
+                                       Value = "C++"
+                                   },
+                                   new SelectListItem() {
+                                       Text = "C#",
+                                       Value = "C#"
+                                   },
+                                   new SelectListItem() {
+                                       Text = "JavaScript",
+                                       Value = "JavaScript"
+                                   },
+                                   new SelectListItem() {
+                                       Text = "jQuery",
+                                       Value = "jQuery"
+                                   },
+                                   new SelectListItem() {
+                                       Text = "Git",
+                                       Value = "Git"
+                                   },
+                                   new SelectListItem() {
+                                       Text = "Node.js",
+                                       Value = "Node.js"
+                                   },
+                                   new SelectListItem() {
+                                       Text = "Ruby",
+                                       Value = "Ruby"
+                                   },
+                                   new SelectListItem() {
+                                       Text = "Ruby on Rails",
+                                       Value = "Ruby on Rails"
+                                   },
+                                   new SelectListItem() {
+                                       Text = "Kendo UI",
+                                       Value = "Kendo UI"
+                                   }
+                               })
+                        )
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label col-form-label-md text-md-end" for="experience">Experience</label>
+                    <div class="col-sm-12 col-md-8 col-lg-6">
+                        @(Html.Kendo().NumericTextBox()
+              .Name("experience")
+              .Value(4))
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="gender">Gender</label>
-                <div class="col-sm-8 col-md-6">
-                    @(Html.Kendo().DropDownList()
-                        .Name("gender")
-                        .DataTextField("Text")
-                        .DataValueField("Value")
-                        .Value("Male")
-                        .BindTo(new List<SelectListItem>() {
-                              new SelectListItem() {
-                                  Text = "Male",
-                                  Value = "Male"
-                              },
-                              new SelectListItem() {
-                                  Text = "Female",
-                                  Value = "Female"
-                              }
-                          })
-                    )
+            <div class="clearfix"></div>
+
+            <div class="form-widgets col-sm-12">
+                <div class="row mb-3">
+                    <label class="col-sm-12 col-md-2 text-md-end" for="bio">Short bio</label>
+                    <div class="col-sm-12 col-md-10 col-lg-9">
+                        @(Html.Kendo().Editor().Name("bio"))
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="language">Language</label>
-                <div class="col-sm-8 col-md-6">
-                    @(Html.Kendo().DropDownList()
-                        .Name("language")
-                        .DataTextField("Text")
-                        .DataValueField("Value")
-                        .Value("English")
-                        .BindTo(new List<SelectListItem>() {
-                              new SelectListItem() {
-                                  Text = "English",
-                                  Value = "English"
-                              },
-                              new SelectListItem() {
-                                  Text = "German",
-                                  Value = "German"
-                              }
-                          })
-                    )
-                </div>
+            <div class="buttons-wrap">
+                <button class="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base">Cancel</button>
+                <button class="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base">Update</button>
             </div>
-        </div>
-
-        <div class="form-horizontal form-widgets col-sm-6">
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="occupation">Occupation</label>
-                <div class="col-sm-8 col-md-6">
-                    @(Html.Kendo().TextBox().Name("occupation").Placeholder("e.g. Developer"))
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="skills">Skills</label>
-                <div class="col-sm-8 col-md-6">
-                    @(Html.Kendo().MultiSelect()
-                        .Name("skills")
-                        .DataTextField("Text")
-                        .DataValueField("Value")
-                        .Value(new string[] { "C#", "jQuery" })
-                        .BindTo(new List<SelectListItem>() {
-                              new SelectListItem() {
-                                  Text = "C",
-                                  Value = "C"
-                              },
-                              new SelectListItem() {
-                                  Text = "C++",
-                                  Value = "C++"
-                              },
-                              new SelectListItem() {
-                                  Text = "C#",
-                                  Value = "C#"
-                              },
-                              new SelectListItem() {
-                                  Text = "JavaScript",
-                                  Value = "JavaScript"
-                              },
-                              new SelectListItem() {
-                                  Text = "jQuery",
-                                  Value = "jQuery"
-                              },
-                              new SelectListItem() {
-                                  Text = "Git",
-                                  Value = "Git"
-                              },
-                              new SelectListItem() {
-                                  Text = "Node.js",
-                                  Value = "Node.js"
-                              },
-                              new SelectListItem() {
-                                  Text = "Ruby",
-                                  Value = "Ruby"
-                              },
-                              new SelectListItem() {
-                                  Text = "Ruby on Rails",
-                                  Value = "Ruby on Rails"
-                              },
-                              new SelectListItem() {
-                                  Text = "UI for ASP.NET Core",
-                                  Value = "UI for ASP.NET Core"
-                              }
-                          })
-                    )
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="experience">Experience</label>
-                <div class="col-sm-8 col-md-6">
-                    @(Html.Kendo().NumericTextBox()
-                    .Name("experience")
-                    .Value(4))
-                </div>
-            </div>
-        </div>
-
-        <div class="clearfix"></div>
-
-        <div class="form-horizontal form-widgets col-sm-12">
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="bio">Short bio</label>
-                <div class="col-sm-10">
-                    @(Html.Kendo().Editor().Name("bio"))
-                </div>
-            </div>
-        </div>
-
-        <div class="buttons-wrap">
-            <button class="k-button k-state-default">Cancel</button>
-            <button class="k-button k-state-default">Update</button>
         </div>
     </section>
+
     @(Html.Kendo().Grid<Kendo_UI_Bootstrap_Integration.Orders.OrderViewModel>()
                     .Name("orders")
                     .HtmlAttributes(new { @class = "ra-section" })
@@ -410,68 +431,69 @@
                             .Transport(t => t.Read(r => r.Url("https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders")))
                     )
 
-    )
+        )
 
     @(Html.Kendo().Scheduler<Kendo_UI_Bootstrap_Integration.Scheduler.TaskViewModel>()
-    .Name("schedule")
-    .Date(new DateTime(2013, 6, 13))
-    .StartTime(new DateTime(2013, 6, 13, 7, 00, 00))
-    .EndTime(new DateTime(2013, 6, 13, 20, 00, 00))
-    .HtmlAttributes(new { @class = "ra-section" })
-    .Views(views =>
-    {
-        views.DayView(dayView => dayView.Selected(true));
-        views.WeekView();
-        views.MonthView();
-    })
-    .Editable(false)
-    .Timezone("Etc/UTC")
-    .DataSource(dataSource => dataSource
-        .Custom()
-        .Transport(t => t
-            .Read(r => r
-                .Url("https://demos.telerik.com/kendo-ui/service/meetings")
-                .DataType("jsonp"))
-        )
-        .Schema(schema => schema
-            .Model(m =>
-            {
-                m.Id(f => f.TaskID);
-                m.Field("title", typeof(string)).DefaultValue("No title").From("Title");
-                m.Field("start", typeof(DateTime)).From("Start");
-                m.Field("end", typeof(DateTime)).From("End");
-                m.Field("description", typeof(string)).From("Description");
-                m.Field("recurrenceID", typeof(int)).From("RecurrenceID");
-                m.Field("recurrenceRule", typeof(string)).From("RecurrenceRule");
-                m.Field("recurrenceException", typeof(string)).From("RecurrenceException");
-                m.Field("isAllDay", typeof(bool)).From("IsAllDay");
-                m.Field("startTimezone", typeof(string)).From("StartTimezone");
-                m.Field("endTimezone", typeof(string)).From("EndTimezone");
-            })
-            )
-    )
-    )
+              .Name("schedule")
+              .Date(new DateTime(2022, 6, 13))
+              .StartTime(new DateTime(2022, 6, 13, 7, 00, 00))
+              .EndTime(new DateTime(2022, 6, 13, 20, 00, 00))
+              .HtmlAttributes(new { @class = "ra-section" })
+              .Views(views =>
+              {
+                  views.DayView(dayView => dayView.Selected(true));
+                  views.WeekView();
+                  views.MonthView();
+              })
+              .Editable(false)
+              .Timezone("Etc/UTC")
+              .DataSource(dataSource => dataSource
+                  .Custom()
+                  .Transport(t => t
+                      .Read(r => r
+                          .Url("https://demos.telerik.com/kendo-ui/service/meetings")
+                          .DataType("jsonp"))
+                  )
+                  .Schema(schema => schema
+                      .Model(m =>
+                      {
+                          m.Id(f => f.TaskID);
+                          m.Field("title", typeof(string)).DefaultValue("No title").From("Title");
+                          m.Field("start", typeof(DateTime)).From("Start");
+                          m.Field("end", typeof(DateTime)).From("End");
+                          m.Field("description", typeof(string)).From("Description");
+                          m.Field("recurrenceID", typeof(int)).From("RecurrenceID");
+                          m.Field("recurrenceRule", typeof(string)).From("RecurrenceRule");
+                          m.Field("recurrenceException", typeof(string)).From("RecurrenceException");
+                          m.Field("isAllDay", typeof(bool)).From("IsAllDay");
+                          m.Field("startTimezone", typeof(string)).From("StartTimezone");
+                          m.Field("endTimezone", typeof(string)).From("EndTimezone");
+                      })
+                      )
+              )
+         )
 
-    <section id="gallery" class="well">
-        <h2 class="ra-well-title">Latest photo uploads</h2>
+    <section id="gallery" class="card">
+        <div class="card-header" style="font-size: 14px;">Latest photo uploads</div>
 
-        <script id="listview-template" type="x-kendo-template">
-            <li class="col-xs-6 col-md-4 col-lg-2">
-                <figure>
-                    <img src='@Url.Content("~/assets/photos/#= Id #.jpg")' class="img-responsive" />  
-                    <figcaption class="hidden-xs">
-                        <h4>#: Title #</h4>
-                        <p class="hidden-sm">
-                            #: Description #
-                        </p>
-                    </figcaption>
-                </figure>
-            </li>
+        <script type="text/x-kendo-tmpl" id="listview-template">
+                    <li class="col-xs-6 col-md-4 col-lg-2 k-listview-item">
+                        <figure>
+                            <img src='@Url.Content("~/assets/photos/#=data.Id #.jpg")' class="img-fluid" />
+                            <figcaption class="d-none d-sm-block">
+                                <h4 style="font-size: 14px;">#: Title #</h4>
+                                <p class="d-sm-none d-md-block" style="font-size: 14px;">
+                                    #: Description #
+                                </p>
+                            </figcaption>
+                        </figure>
+                    </li>
         </script>
+
         @(Html.Kendo().ListView<Kendo_UI_Bootstrap_Integration.ListViewModel>()
             .Name("listview")
-            .HtmlAttributes(new { @class = "ra-well-overlay row" })
             .ClientTemplateId("listview-template")
+            .ClientTemplateHandler("template")
             .TagName("div")
             .BindTo(new List<Kendo_UI_Bootstrap_Integration.ListViewModel>() {
                               new Kendo_UI_Bootstrap_Integration.ListViewModel() {
@@ -539,10 +561,11 @@
     </section>
 
     <section id="faq" class="well">
-        <h2 class="ra-well-title">
+        <div class="card-header" style="font-size: 14px;">
             <abbr title="Frequently Asked Questions">FAQ</abbr>
-        </h2>
+        </div>
 
+        <div class="card-body">
         @(Html.Kendo().PanelBar()
             .Name("panelbar")
             .HtmlAttributes(new { @class = "ra-well-overlay" })
@@ -576,6 +599,7 @@
                     }
                 )
         )
+        </div>
     </section>
     <footer>Copyright © @DateTime.Now.Year Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.</footer>
 </div>

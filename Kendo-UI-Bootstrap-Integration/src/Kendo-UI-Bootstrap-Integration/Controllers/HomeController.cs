@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Kendo_UI_Bootstrap_Integration.Models;
 using Kendo.Mvc.UI;
 using Newtonsoft.Json;
+using KendoUI_Bootstrap_Integration.Models;
 
 namespace mvc_core.Controllers
 {
@@ -283,6 +284,47 @@ namespace mvc_core.Controllers
             };
 
             return Json(data);
+        }
+
+        public JsonResult GetSwatches(string theme)
+        {
+            List<Swatch> swatches = new List<Swatch>()
+            {
+                // Default themes
+                new Swatch("Default Main", "default-main", "1"),
+                new Swatch("Default Main Dark", "default-main-dark", "1"),
+                new Swatch("Nordic", "default-nordic", "1"),
+                new Swatch("Ocean Blue", "default-ocean-blue", "1"),
+                new Swatch("Purple", "default-purple", "1"),
+                new Swatch("Turquoise", "default-turquoise", "1"),
+
+                // Bootstrap themes
+                new Swatch("Bootstrap Main", "bootstrap-main", "2"),
+                new Swatch("Bootstrap Main Dark", "bootstrap-main-dark", "2"),
+                new Swatch("Nordic", "bootstrap-nordic", "2"),
+                new Swatch("Urban", "bootstrap-urban", "2"),
+                new Swatch("Vintage", "bootstrap-vintage", "2"),
+
+                // Material themes
+                new Swatch("Material Main", "material-main", "3"),
+                new Swatch("Arctic", "material-arctic", "3"),
+                new Swatch("Material Lime Dark", "material-lime-dark", "3"),
+                new Swatch("Material Main Dark", "material-main-dark", "3"),
+                new Swatch("Nova", "material-nova", "3"),
+
+                // Classic themes
+                new Swatch("Classic Main", "classic-main", "4"),
+                new Swatch("Classic Main Dark", "classic-main-dark", "4"),
+                new Swatch("Opal", "classic-opal", "4"),
+                new Swatch("Silver", "classic-silver", "4")
+            };
+
+            if (theme != null)
+            {
+                swatches = swatches.Where(p => p.ThemeValue == theme).ToList();
+            }
+
+            return Json(swatches);
         }
 
         public ActionResult About()

@@ -4,181 +4,205 @@
     <title>ASP.NET Core Responsive Demo of Twitter Bootstrap | Telerik UI for ASP.NET Core</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="The demo shows how to use Telerik UI for ASP.NET Core alongside Twitter Bootstrap. The grid layout and responsive CSS is provided by Bootstrap, and components are provided byTelerik UI for ASP.NET Core.">
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2023.1.117/styles/kendo.common-bootstrap.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2023.1.117/styles/kendo.bootstrap.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2023.1.117/styles/kendo.dataviz.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2023.1.117/styles/kendo.dataviz.bootstrap.min.css" />
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2023.1.117/js/kendo.all.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2023.1.117/js/kendo.timezones.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2023.1.117/js/kendo.aspnetmvc.min.js"></script>
-    <script src="~/js/theme-chooser.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/6.2.0/bootstrap/bootstrap-main.css" />
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2023.1.314/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2023.1.314/js/kendo.timezones.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2023.1.314/js/kendo.aspnetmvc.min.js"></script>
     <link rel="stylesheet" href="~/css/styles.css" />
 </head>
 <body>
+    <script>
+        function filterSwatches() {
+            return {
+                theme: $("#theme").val()
+            };
+        }
+
+        function onSwatchChange(e) {
+            var themeName = $("#theme")
+                .data("kendoDropDownList")
+                .text()
+                .toLowerCase();
+            var swatch = this.value();
+
+            $("link").each(function () {
+
+                if (this.href.indexOf("/themes/") != -1) {
+                    var themeVersion = this.href.split("/")[4];
+                    var curHref =
+                        "https://kendo.cdn.telerik.com/themes/" +
+                        themeVersion +
+                        "/" +
+                        themeName +
+                        "/" +
+                        swatch +
+                        ".css";
+                    this.href = curHref;
+                }
+            });
+
+            let isBlack = swatch.includes("dark");
+            if (isBlack) {
+                $("html").addClass("k-black");
+            } else {
+                $("html").removeClass("k-black");
+            }
+        }
+
+
+
+        function resizeTabStripContent() {
+            kendo.resize("#tabstrip");
+        }
+
+        function onDimensionChange() {
+            window.kendoThemeChooser.changeCommon(this.value(), true);
+        }
+
+        function onThemeChange() {
+            debugger;
+            theme = this.value();
+            window.kendoThemeChooser.changeTheme(theme, true);
+        }
+
+        function changeFontSize(e) {
+            var value = $("#font-size").data("kendoDropDownList").value();
+
+            $("body, p, span, h4").css("font-size", value + "px");
+            $("#orders td, #scheduler, .k-scheduler-times-all-day, .k-event-template, .card-header").css("font-size", value + "px");
+            $(".k-input-inner, .k-item, .k-column-title, k-panelbar-item-text, .k-icon, .k-link, .k-button-text").css("font-size", value + "px");
+            $("body").css("font-size", value + "px");
+        }
+
+
+
+        $(window).resize(resizeTabStripContent);
+    </script>
     <header>
-        <div class="container" class="row">
-            <h1 class="col-sm-3 hidden-sm">Telerik UI &hearts; Bootstrap</h1>
-            <h1 class="col-sm-3 visible-sm">
-                Telerik UI &hearts;<br />
-                Bootstrap
-            </h1>
+        <div class="container-sm">
+            <div class="row">
+                <div class="col-sm-4 hidden-sm">
+                    <h1 class="header-description">Telerik UI for ASP.NET Core<sup>&reg;</sup> &hearts; Bootstrap</h1>
+                </div>
 
-            <button id="configure" class="visible-xs"><span class="glyphicon glyphicon-align-justify"></span></button>
 
-            <div id="configurator-wrap" class="col-sm-9 hidden-xs">
-                <div id="configurator" class="row">
-                    <label class="col-sm-4">
-                        <span class="description">Dimensions</span>
-                        @(Html.Kendo().DropDownList()
-                        .Name("dimensions")
-                        .DataTextField("Text")
-                        .DataValueField("Value")
-                        .Value("common-bootstrap")
-                        .Events(e => e.Change("function() { window.kendoThemeChooser.changeCommon(this.value(), true);}"))
-                        .BindTo(new List<SelectListItem>() {
-                              new SelectListItem() {
-                                  Text = "Default",
-                                  Value = "common"
-                              },
-                              new SelectListItem() {
-                                  Text = "Bootstrap",
-                                  Value = "common-bootstrap"
-                              }
-                          })
-                        )
-                    </label>
+                <button id="configure" class="d-md-none">
+                    <span class="k-icon k-i-menu"></span>
+                </button>
 
-                    <label class="col-sm-4">
-                        <span class="description">Theme</span>
-                        @(Html.Kendo().DropDownList()
-                            .Name("theme")
-                            .DataTextField("Text")
-                            .DataValueField("Value")
-                            .Value("bootstrap")
-                            .BindTo(new List<SelectListItem>() {
-                              new SelectListItem() {
-                                  Text = "Default",
-                                  Value = "default"
-                              },
-                              new SelectListItem() {
-                                  Text = "Blue Opal",
-                                  Value = "blueopal"
-                              },
-                              new SelectListItem() {
-                                  Text = "Bootstrap",
-                                  Value = "bootstrap"
-                              },
-                              new SelectListItem() {
-                                  Text = "Silver",
-                                  Value = "silver"
-                              },
-                              new SelectListItem() {
-                                  Text = "Uniform",
-                                  Value = "uniform"
-                              },
-                              new SelectListItem() {
-                                  Text = "Metro",
-                                  Value = "metro"
-                              },
-                              new SelectListItem() {
-                                  Text = "Black",
-                                  Value = "black"
-                              },
-                              new SelectListItem() {
-                                  Text = "Metro Black",
-                                  Value = "metroblack"
-                              },
-                              new SelectListItem() {
-                                  Text = "High Contrast",
-                                  Value = "highcontrast"
-                              },
-                              new SelectListItem() {
-                                  Text = "Moonlight",
-                                  Value = "moonlight"
-                              },
-                              new SelectListItem() {
-                                  Text = "Flat",
-                                  Value = "flat"
-                              }
-                          })
-                          .Events(e => e.Change("onThemeChange"))
-                        )
-                    </label>
+                <div id="configurator-wrap" class="col-md-8 d-none d-md-block">
+                    <div id="configurator" class="row">
+                        <label class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="description">Theme</div>
+                            @(Html.Kendo().DropDownList()
+                                .Name("theme")
+                                .DataTextField("Text")
+                                .DataValueField("Value")
+                                .BindTo(new List<SelectListItem>() {
+                            new SelectListItem() {
+                            Text = "Default",
+                            Value = "1"
+                            },
+                            new SelectListItem() {
+                            Text = "Bootstrap",
+                            Value = "2"
+                            },
+                            new SelectListItem() {
+                            Text = "Material",
+                            Value = "3"
+                            },
+                            new SelectListItem() {
+                            Text = "Classic",
+                            Value = "4"
+                            }
+                            })
+                                .Value("2")
+                                )
+                        </label>
 
-                    <label class="col-sm-4">
-                        <span class="description">Font-size</span>
-                        @(Html.Kendo().DropDownList()
-                        .Name("font-size")
-                        .DataTextField("Text")
-                        .DataValueField("Value")
-                        .Value("14")
-                        .Events(e => e.Change("changeFontSize"))
-                        .BindTo(new List<SelectListItem>() {
-                              new SelectListItem() {
-                                  Text = "10px",
-                                  Value = "10"
-                              },
-                              new SelectListItem() {
-                                  Text = "12px",
-                                  Value = "12"
-                              },
-                              new SelectListItem() {
-                                  Text = "14px",
-                                  Value = "14"
-                              },
-                              new SelectListItem() {
-                                  Text = "16px",
-                                  Value = "16"
-                              },
-                              new SelectListItem() {
-                                  Text = "18px",
-                                  Value = "18"
-                              },
-                              new SelectListItem() {
-                                  Text = "20px",
-                                  Value = "20"
-                              }
-                          })
-                        )
-                    </label>
+                        <label class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="description">Swatch</div>
+                            @(Html.Kendo().DropDownList()
+                                .Name("swatch")
+                                .DataTextField("SwatchName")
+                                .DataValueField("SwatchValue")
+                                .DataSource(source =>
+                                {
+                                    source.Read(read =>
+                                    {
+                                        read.Action("GetSwatches", "Home")
+                                    .Data("filterSwatches");
+                                    })
+                                    .ServerFiltering(true);
+                                })
+                                .Value("bootstrap-main")
+                                .CascadeFrom("theme")
+                                .Events(e => e.Change("onSwatchChange"))
+                                )
+                        </label>
+
+                        <label class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="description">Font-size</div>
+                            @(Html.Kendo().DropDownList()
+                                .Name("font-size")
+                                .DataTextField("Text")
+                                .DataValueField("Value")
+                                .BindTo(new List<SelectListItem>() {
+                            new SelectListItem() {
+                            Text = "10px",
+                            Value = "10"
+                            },
+                            new SelectListItem() {
+                            Text = "12px",
+                            Value = "12"
+                            },
+                            new SelectListItem() {
+                            Text = "14px",
+                            Value = "14"
+                            },
+                            new SelectListItem() {
+                            Text = "16px",
+                            Value = "16"
+                            },
+                            new SelectListItem() {
+                            Text = "18px",
+                            Value = "18"
+                            },
+                            new SelectListItem() {
+                            Text = "20px",
+                            Value = "20"
+                            }
+                            })
+                                .Events(e => e.Change("changeFontSize"))
+                                .Value("14")
+                                )
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
     @RenderBody()
     <script>
+
         $(document).ready(function () {
             changeFontSize();
 
-            $("#theme-list, #dimensions-list, #font-size-list").addClass("ra-list");
+            $("#theme-list, #swatch-list, #font-size-list").addClass("ra-list");
 
             $("#configure").on("click", function (e) {
                 $("#configurator-wrap").toggleClass("hidden-xs");
                 e.preventDefault();
             });
+
+
+
+
+
         })
-        
-        function onDimensionChange() {
-            window.kendoThemeChooser.changeCommon(this.value(), true);
-        }
-
-        function onThemeChange() {
-            theme = this.value();
-            window.kendoThemeChooser.changeTheme(theme, true);
-        }
-
-        function changeFontSize() {
-            var value = $("#font-size").kendoDropDownList("value");
-            $("body").css("font-size", value + "px");
-        }
-
-        function resizeTabStripContent() {
-            kendo.resize("#tabstrip");
-        }
-
-        $(window).resize(resizeTabStripContent);
     </script>
 </body>
 </html>
