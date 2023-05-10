@@ -402,6 +402,10 @@ footer {
     .header-description {
         font-size: 14px;
     }
+
+    .container-sm {
+        height: 62px;
+    }
 }
 
 @media (max-width: 768px) {
