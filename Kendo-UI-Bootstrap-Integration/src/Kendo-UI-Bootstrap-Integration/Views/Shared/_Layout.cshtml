@@ -93,7 +93,7 @@
                     <span class="k-icon k-i-menu"></span>
                 </button>
 
-                <div id="configurator-wrap" class="col-md-8 d-none d-md-block">
+                <div id="configurator-wrap" class="col-md-8 d-md-block">
                     <div id="configurator" class="row">
                         <label class="col-md-4 col-sm-12 col-xs-12">
                             <div class="description">Theme</div>
@@ -198,11 +198,33 @@
                 e.preventDefault();
             });
 
-
-
-
-
         })
+
+        $(window).on("resize", function () {
+            // change menu orientation when window resizes
+            setMenuOrientation();
+            
+            if (window.innerWidth <= 759){
+                
+                $("#configurator-wrap").addClass("hidden-xs");
+            };
+        });
+
+        function setMenuOrientation() {
+            var windowWidth = $(window).width();
+            var menu = $("#menu").data("kendoMenu");
+            var orientation = menu.options.orientation;
+
+            if (windowWidth <= 760) {
+                orientation = "vertical";
+            } else {
+                orientation = "horizontal";
+            }
+
+            menu.setOptions({
+                orientation: orientation,
+            });
+        }
     </script>
 </body>
 </html>

@@ -319,9 +319,25 @@ footer {
     padding: 2em 0;
 }
 
-@media (max-width: 1360px) {
+.hidden-sm {
+    padding-top: 24px;
+}
+
+.hidden-xs{
+    display: none;
+}
+
+@media (max-width: 1400px) {
     .k-listview-content {
         justify-content: space-evenly;
+    }
+
+    .hidden-sm {
+        width: 43%;
+    }
+
+    #configurator-wrap {
+        width: 56%;
     }
 }
 
@@ -330,6 +346,14 @@ footer {
         padding-top: 0px;
         padding-bottom: 0px;
         font-size: 16px;
+    }
+
+    .hidden-sm{
+        width: 45%;
+    }
+
+    #configurator-wrap{
+        width: 55%;
     }
 }
 
@@ -370,6 +394,11 @@ footer {
         margin: 0;
     }
 
+    .hidden-sm {
+        width: 60%;
+        padding-top: 19px;
+    }
+
     .header-description {
         font-size: 14px;
     }
@@ -382,7 +411,6 @@ footer {
 
     .header-description {
         min-height: 56px;
-        padding-top: 12px;
     }
 }
 
@@ -394,3 +422,4 @@ footer {
     background-color: #1e1e1e;
     color: #fff;
 }
+

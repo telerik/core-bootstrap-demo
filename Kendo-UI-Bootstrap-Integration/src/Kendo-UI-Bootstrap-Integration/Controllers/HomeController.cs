@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Kendo_UI_Bootstrap_Integration.Models;
 using Kendo.Mvc.UI;
 using Newtonsoft.Json;
-using KendoUI_Bootstrap_Integration.Models;
 
 namespace mvc_core.Controllers
 {
