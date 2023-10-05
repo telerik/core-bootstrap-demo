@@ -52,8 +52,6 @@
             }
         }
 
-
-
         function resizeTabStripContent() {
             kendo.resize("#tabstrip");
         }
@@ -77,8 +75,6 @@
             $("body").css("font-size", value + "px");
         }
 
-
-
         $(window).resize(resizeTabStripContent);
     </script>
     <header>
@@ -87,7 +83,6 @@
                 <div class="col-sm-4 hidden-sm">
                     <h1 class="header-description">Telerik UI for ASP.NET Core<sup>&reg;</sup> &hearts; Bootstrap</h1>
                 </div>
-
 
                 <button id="configure" class="d-md-none">
                     <span class="k-icon k-i-menu"></span>
@@ -187,7 +182,6 @@
     </header>
     @RenderBody()
     <script>
-
         $(document).ready(function () {
             changeFontSize();
 
@@ -197,7 +191,6 @@
                 $("#configurator-wrap").toggleClass("hidden-xs");
                 e.preventDefault();
             });
-
         })
 
         $(window).on("resize", function () {
