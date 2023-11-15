@@ -25,6 +25,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
-    <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2023.2.829" />
+    <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2023.3.1114" />
   </ItemGroup>
 </Project>
