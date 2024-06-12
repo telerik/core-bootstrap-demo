@@ -55,7 +55,7 @@
                 .Name("tabstrip")
                 .Items(tabstrip =>
                     {
-                        tabstrip.Add().Text("<span class='km-icon revenue'></span><span class='hidden-xs'>Revenue</span>")
+                        tabstrip.Add().Text("<span class='km-icon revenue-icon'></span><span class='hidden-xs'>Revenue</span>")
                                 .Encoded(false)
                                 .Selected(true)
                                 .Content(@<text>
@@ -63,7 +63,7 @@
                                             .Name("revenue")
                                             .DataSource(ds => ds.Read(read => read.Action("Revenue", "Home")))
                                             .Transitions(false)
-                                            .Theme("bootstrap")
+                                            .Theme("sass")
                                             .ChartArea(chart => chart.Margin(m => m.Top(15))
                                             .Background("transparent"))
                                             .Legend(l => l.Visible(false))
@@ -92,18 +92,18 @@
                                            .Tooltip(t=>t.Visible(true).Template("#= series.name # <br /> #= category #: $#= value #"))
                                         )
                         </text>);
-                        tabstrip.Add().Text("<span class='km-icon spd'></span><span class='hidden-xs'>Sales / day</span>")
+                        tabstrip.Add().Text("<span class='km-icon spd-icon'></span><span class='hidden-xs'>Sales / day</span>")
                                 .Encoded(false)
                                 .Content(@<text>
                                             @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.SalesPerDayViewModel>()
                                             .Name("sales-per-day")
                                             .DataSource(ds => ds.Read(read => read.Action("SalesPerDay", "Home")))
                                             .Transitions(false)
-                                            .Theme("bootstrap")
+                                            .Theme("sass")
                                             .ChartArea(chart => chart.Margin(m => m.Top(15))
                                             .Background("transparent"))
                                             .Legend(l => l.Visible(false))
-                                            .SeriesDefaults(s => s.VerticalBullet())
+                                            .SeriesDefaults(s => s.VerticalBullet().Target(t=>t.Color("#ff0000")))
                                             .CategoryAxis(a => a.Categories(m => m.Date)
                                                 .Labels(l => l.Visible(false))
                                                 .MajorGridLines(m => m.Visible(false)))
@@ -115,14 +115,14 @@
                                             }))
                                             )
                         </text>);
-                        tabstrip.Add().Text("<span class='km-icon spr'></span><span class='hidden-xs'>Sales / region</span>")
+                        tabstrip.Add().Text("<span class='km-icon spr-icon'></span><span class='hidden-xs'>Sales / region</span>")
                                 .Encoded(false)
                                 .Content(@<text>
                                             @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.SalesPerRegionViewModel>()
                                             .Name("sales-per-region")
                                             .DataSource(ds => ds.Read(read => read.Action("SalesPerRegion", "Home")))
                                             .Transitions(false)
-                                            .Theme("bootstrap")
+                                            .Theme("sass")
                                             .Legend(l=>l.Visible(false))
                                             .ChartArea(c=>c.Margin(m => m.Top(15))
                                             .Background("transparent"))
@@ -136,7 +136,7 @@
                                                 .Labels(l=>l.Visible(false))
                                                 .MajorGridLines(l=>l.Visible(false))
                                                 )
-                                           .Tooltip(t=>t.Visible(false).Template("#= series.name # <br /> #= category #: #= value #"))
+                                           .Tooltip(t=>t.Visible(true).Shared(true).Template("#= series.name # <br /> #= category #: #= value #"))
                                            .Series(series => {
                                                series.Area(model => model.Canterbury).Name("Canterbury");
                                                series.Area(model => model.Manchester).Name("Manchester");
@@ -145,7 +145,7 @@
                                             .ValueAxis(v=>v.Numeric().Labels(l=>l.Step(2)))
                                         )
                         </text>);
-                        tabstrip.Add().Text("<span class='km-icon share'></span><span class='hidden-xs'>Market share</span>")
+                        tabstrip.Add().Text("<span class='km-icon share-icon'></span><span class='hidden-xs'>Market share</span>")
                                 .Encoded(false)
                                 .Content(@<text>
                                             @(Html.Kendo().Chart<Kendo_UI_Bootstrap_Integration.Models.DonutChartViewModel>()
@@ -153,7 +153,7 @@
                                                 .Name("market-alice-mutton")
                                                 .DataSource(ds => ds.Read(read => read.Action("AliceMutton", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
-                                                .Theme("bootstrap")
+                                                .Theme("sass")
                                                 .Title(t => t
                                                     .Text("Alice Mutton")
                                                     .Position(ChartTitlePosition.Bottom)
@@ -176,7 +176,7 @@
                                                 .Name("market-gravad")
                                                 .DataSource(ds => ds.Read(read => read.Action("Gravad", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
-                                                .Theme("bootstrap")
+                                                .Theme("sass")
                                                 .Title(t => t
                                                     .Text("Gravad lax")
                                                     .Position(ChartTitlePosition.Bottom)
@@ -199,7 +199,7 @@
                                                 .Name("market-inlagd")
                                                 .DataSource(ds => ds.Read(read => read.Action("Inlagd", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
-                                                .Theme("bootstrap")
+                                                .Theme("sass")
                                                 .Title(t => t
                                                     .Text("Inlagd Sill")
                                                     .Position(ChartTitlePosition.Bottom)
@@ -222,7 +222,7 @@
                                                 .Name("market-spageslid")
                                                 .DataSource(ds => ds.Read(read => read.Action("Spegesild", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
-                                                .Theme("bootstrap")
+                                                .Theme("sass")
                                                 .Title(t => t
                                                     .Text("Spageslid")
                                                     .Position(ChartTitlePosition.Bottom)
@@ -603,3 +603,13 @@
     </section>
     <footer>Copyright © @DateTime.Now.Year Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.</footer>
 </div>
+
+<script>
+    $(document).ready(function () {
+        kendo.ui.icon($(".revenue-icon"), { icon: 'dollar' });
+        kendo.ui.icon($(".spd-icon"), { icon: 'chart-column-clustered' });
+        kendo.ui.icon($(".spr-icon"), { icon: 'graph' });
+        kendo.ui.icon($(".share-icon"), { icon: 'chart-doughnut' });
+
+    });
+</script>
