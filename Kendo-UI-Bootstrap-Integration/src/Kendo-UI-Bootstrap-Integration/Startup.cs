@@ -53,6 +53,7 @@ namespace mvc_core
 
 
             app.UseHttpsRedirection();
+            app.UsePathBase("/aspnet-core/bootstrap/");
             app.UseStaticFiles();
 
             app.UseRouting();
