@@ -10,7 +10,7 @@
             this.Tasks1 = new HashSet<Task>();
         }
 
-        public int TaskID { get; set; }
+        public int MeetingID { get; set; }
         public System.DateTime Start { get; set; }
         public System.DateTime End { get; set; }
         public string Title { get; set; }

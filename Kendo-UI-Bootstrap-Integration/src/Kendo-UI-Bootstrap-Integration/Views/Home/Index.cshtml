@@ -63,7 +63,6 @@
                                             .Name("revenue")
                                             .DataSource(ds => ds.Read(read => read.Action("Revenue", "Home")))
                                             .Transitions(false)
-                                            .Theme("sass")
                                             .ChartArea(chart => chart.Margin(m => m.Top(15))
                                             .Background("transparent"))
                                             .Legend(l => l.Visible(false))
@@ -99,7 +98,6 @@
                                             .Name("sales-per-day")
                                             .DataSource(ds => ds.Read(read => read.Action("SalesPerDay", "Home")))
                                             .Transitions(false)
-                                            .Theme("sass")
                                             .ChartArea(chart => chart.Margin(m => m.Top(15))
                                             .Background("transparent"))
                                             .Legend(l => l.Visible(false))
@@ -122,7 +120,6 @@
                                             .Name("sales-per-region")
                                             .DataSource(ds => ds.Read(read => read.Action("SalesPerRegion", "Home")))
                                             .Transitions(false)
-                                            .Theme("sass")
                                             .Legend(l=>l.Visible(false))
                                             .ChartArea(c=>c.Margin(m => m.Top(15))
                                             .Background("transparent"))
@@ -153,7 +150,6 @@
                                                 .Name("market-alice-mutton")
                                                 .DataSource(ds => ds.Read(read => read.Action("AliceMutton", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
-                                                .Theme("sass")
                                                 .Title(t => t
                                                     .Text("Alice Mutton")
                                                     .Position(ChartTitlePosition.Bottom)
@@ -176,7 +172,6 @@
                                                 .Name("market-gravad")
                                                 .DataSource(ds => ds.Read(read => read.Action("Gravad", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
-                                                .Theme("sass")
                                                 .Title(t => t
                                                     .Text("Gravad lax")
                                                     .Position(ChartTitlePosition.Bottom)
@@ -199,7 +194,6 @@
                                                 .Name("market-inlagd")
                                                 .DataSource(ds => ds.Read(read => read.Action("Inlagd", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
-                                                .Theme("sass")
                                                 .Title(t => t
                                                     .Text("Inlagd Sill")
                                                     .Position(ChartTitlePosition.Bottom)
@@ -222,7 +216,6 @@
                                                 .Name("market-spageslid")
                                                 .DataSource(ds => ds.Read(read => read.Action("Spegesild", "Home")).Group(g => g.Add(d=> d.Series)))
                                                 .Transitions(false)
-                                                .Theme("sass")
                                                 .Title(t => t
                                                     .Text("Spageslid")
                                                     .Position(ChartTitlePosition.Bottom)
@@ -423,21 +416,21 @@
                     .Scrollable(s => s.Enabled(false))
                     .DataSource(dataSource => dataSource
                             .Custom()
-                            .Type("odata")
+                            .Type("odata-v4")
                             .PageSize(10)
                             .ServerPaging(true)
                             .ServerSorting(true)
                             .ServerFiltering(true)
-                            .Transport(t => t.Read(r => r.Url("https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders")))
+                            .Transport(t => t.Read(r => r.Url("https://demos.telerik.com/service/v2/odata/Orders")))
                     )
 
         )
 
     @(Html.Kendo().Scheduler<Kendo_UI_Bootstrap_Integration.Scheduler.TaskViewModel>()
               .Name("schedule")
-              .Date(new DateTime(2022, 6, 13))
-              .StartTime(new DateTime(2022, 6, 13, 7, 00, 00))
-              .EndTime(new DateTime(2022, 6, 13, 20, 00, 00))
+              .Date(new DateTime(2024, 6, 10))
+              .StartTime(new DateTime(2024, 6, 10, 7, 00, 00))
+              .EndTime(new DateTime(2024, 6, 10, 20, 00, 00))
               .HtmlAttributes(new { @class = "ra-section" })
               .Views(views =>
               {
@@ -451,13 +444,13 @@
                   .Custom()
                   .Transport(t => t
                       .Read(r => r
-                          .Url("https://demos.telerik.com/kendo-ui/service/meetings")
-                          .DataType("jsonp"))
+                          .Url("https://demos.telerik.com/service/v2/core/meetings")
+                          .DataType("json"))
                   )
                   .Schema(schema => schema
                       .Model(m =>
                       {
-                          m.Id(f => f.TaskID);
+                          m.Id(f => f.MeetingID);
                           m.Field("title", typeof(string)).DefaultValue("No title").From("Title");
                           m.Field("start", typeof(DateTime)).From("Start");
                           m.Field("end", typeof(DateTime)).From("End");
