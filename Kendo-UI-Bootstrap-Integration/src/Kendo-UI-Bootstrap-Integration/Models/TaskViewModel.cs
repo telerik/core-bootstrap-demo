@@ -8,7 +8,7 @@
 
     public class TaskViewModel : ISchedulerEvent
     {
-        public int TaskID { get; set; }
+        public int MeetingID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
 
@@ -52,7 +52,7 @@
         {
             return new Task
             {
-                TaskID = TaskID,
+                MeetingID = MeetingID,
                 Title = Title,
                 Start = Start,
                 StartTimezone = StartTimezone,
